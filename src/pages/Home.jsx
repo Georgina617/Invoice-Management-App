@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import invoicesData from '../data/invoice';
 import InvoiceItem from '../components/InvoiceItem';
 import InvoiceDetails from '../components/InvoiceDetails';
-import { BiChevronDown, BiChevronUp } from 'react-icons/bi';
 import EmptyEmail from '../assets/empty.svg';
 import InvoiceModal from '../components/InvoiceModal';
+import { BiChevronDown, BiChevronUp } from 'react-icons/bi';
 
 function Home({ dark }) {
   const [filter, setFilter] = useState(['all']);
