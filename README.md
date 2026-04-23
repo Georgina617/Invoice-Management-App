@@ -1,16 +1,70 @@
-# React + Vite
+🚀 Invoice App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern invoice management app built with React. Create, manage, and track invoices with a clean UI, dark mode support, and persistent data storage.
 
-Currently, two official plugins are available:
+✨ Features
+📄 Create new invoices (Save as Draft or Send)
+🗂 Filter invoices by status (Draft, Pending, Paid)
+💾 Persistent data using localStorage
+✏️ Edit existing invoices
+🗑 Delete invoices with confirmation modal
+✅ Mark invoices as paid (without leaving details page)
+🌙 Fully responsive dark/light mode UI
+📱 Mobile-friendly design
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+🛠️ Tech Stack
+React
+Tailwind CSS
+LocalStorage (for persistence)
+React Icons
+📦 Installation
 
-## React Compiler
+Clone the repo and install dependencies:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+git clone https://github.com/your-username/invoice-app.git
+cd invoice-app
+npm install
+npm run dev
+🧠 How It Works
+Invoices are stored in React state
+Data is synced to localStorage automatically
+On page load, invoices are restored from localStorage
+UI updates instantly using React state updates
+📁 Project Structure
+src/
+ ├── components/
+ │   ├── InvoiceItem.jsx
+ │   ├── InvoiceDetails.jsx
+ │   ├── InvoiceModal.jsx
+ │   ├── EditInvoiceModal.jsx
+ │   ├── DeleteModal.jsx
+ │
+ ├── pages/
+ │   └── Home.jsx
+ │
+ ├── data/
+ │   └── invoice.js
+🔥 Key Improvements (Recent Updates)
+Fixed invoice creation bug
+Added localStorage persistence
+Implemented delete confirmation modal
+Improved dark mode styling
+Fixed status updates without navigation
+Improved mobile spacing and layout
+🎯 Future Improvements
+Backend integration (Firebase / Node.js)
+Authentication (login system)
+Export invoices as PDF
+Search functionality
+Pagination
+🙌 Acknowledgements
 
-## Expanding the ESLint configuration
+Design inspired by modern invoice dashboard UIs.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+📌 Author
+
+Georgina Odusanya
+
+⭐️ Support
+
+If you like this project, give it a ⭐️ on GitHub!
