@@ -1,25 +1,24 @@
 🚀 Invoice App
 
-A modern invoice management app built with React. Create, manage, and track invoices with a clean UI, dark mode support, and persistent data storage.
+A modern invoice management app built with React.
+Create, manage, and track invoices with a clean interface, dark mode support, and persistent storage.
 
 ✨ Features
-📄 Create new invoices (Save as Draft or Send)
-🗂 Filter invoices by status (Draft, Pending, Paid)
-💾 Persistent data using localStorage
-✏️ Edit existing invoices
-🗑 Delete invoices with confirmation modal
-✅ Mark invoices as paid (without leaving details page)
-🌙 Fully responsive dark/light mode UI
-📱 Mobile-friendly design
-
+Create invoices (save as draft or send)
+Filter by status: Draft, Pending, Paid
+Edit existing invoices
+Delete invoices with confirmation
+Mark invoices as paid directly
+Persistent data with localStorage
+Responsive design with dark/light mode
 🛠️ Tech Stack
 React
 Tailwind CSS
-LocalStorage (for persistence)
+LocalStorage
 React Icons
 📦 Installation
 
-Clone the repo and install dependencies:
+Clone the repository and install dependencies:
 
 git clone https://github.com/your-username/invoice-app.git
 cd invoice-app
@@ -27,9 +26,9 @@ npm install
 npm run dev
 🧠 How It Works
 Invoices are stored in React state
-Data is synced to localStorage automatically
-On page load, invoices are restored from localStorage
-UI updates instantly using React state updates
+Data syncs automatically to localStorage
+On reload, saved invoices are restored
+UI updates instantly through state changes
 📁 Project Structure
 src/
  ├── components/
@@ -37,34 +36,34 @@ src/
  │   ├── InvoiceDetails.jsx
  │   ├── InvoiceModal.jsx
  │   ├── EditInvoiceModal.jsx
- │   ├── DeleteModal.jsx
+ │   └── DeleteModal.jsx
  │
  ├── pages/
  │   └── Home.jsx
  │
- ├── data/
- │   └── invoice.js
-🔥 Key Improvements (Recent Updates)
+ └── data/
+     └── invoice.js
+🔥 Recent Improvements
 Fixed invoice creation bug
 Added localStorage persistence
-Implemented delete confirmation modal
+Added delete confirmation modal
 Improved dark mode styling
 Fixed status updates without navigation
-Improved mobile spacing and layout
+Improved mobile layout and spacing
 🎯 Future Improvements
-Backend integration (Firebase / Node.js)
-Authentication (login system)
+Backend integration (Firebase or Node.js)
+Authentication system
 Export invoices as PDF
 Search functionality
 Pagination
 🙌 Acknowledgements
 
-Design inspired by modern invoice dashboard UIs.
+Inspired by modern invoice dashboard designs.
 
 📌 Author
 
 Georgina Odusanya
 
-⭐️ Support
+⭐ Support
 
-If you like this project, give it a ⭐️ on GitHub!
+If you like this project, consider giving it a star on GitHub ⭐️
