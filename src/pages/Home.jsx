@@ -98,9 +98,9 @@ function Home({ dark }) {
               <span className="hidden sm:inline">Filter by status</span>
 
               {open ? (
-                <BiChevronUp className="text-purple-500 text-lg" />
-              ) : (
                 <BiChevronDown className="text-purple-500 text-lg" />
+              ) : (
+                <BiChevronUp className="text-purple-500 text-lg" />
               )}
             </button>
 
