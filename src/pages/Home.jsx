@@ -12,13 +12,27 @@ function Home({ dark }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedInvoice, setSelectedInvoice] = useState(null);
 
-  // ✅ FIXED: LOAD FROM LOCALSTORAGE SAFELY
+  // ✅ SAFE LOCALSTORAGE LOAD (VERY IMPORTANT)
   const [invoices, setInvoices] = useState(() => {
-    const saved = localStorage.getItem('invoices');
-    return saved ? JSON.parse(saved) : invoicesData;
+    try {
+      const saved = localStorage.getItem('invoices');
+
+      // 👉 if NOTHING in storage → use default data
+      if (!saved) return invoicesData;
+
+      const parsed = JSON.parse(saved);
+
+      // 👉 if storage is empty array → keep it empty (don't fallback)
+      if (Array.isArray(parsed)) return parsed;
+
+      return invoicesData;
+    } catch (error) {
+      console.log('LocalStorage error:', error);
+      return invoicesData;
+    }
   });
 
-  // ✅ SAVE TO LOCALSTORAGE
+  // ✅ SAVE EVERY CHANGE
   useEffect(() => {
     localStorage.setItem('invoices', JSON.stringify(invoices));
   }, [invoices]);
@@ -98,9 +112,9 @@ function Home({ dark }) {
               <span className="hidden sm:inline">Filter by status</span>
 
               {open ? (
-                <BiChevronDown className="text-purple-500 text-lg" />
-              ) : (
                 <BiChevronUp className="text-purple-500 text-lg" />
+              ) : (
+                <BiChevronDown className="text-purple-500 text-lg" />
               )}
             </button>
 
