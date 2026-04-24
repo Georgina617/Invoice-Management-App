@@ -187,7 +187,7 @@ function InvoiceDetails({ invoice, onBack, dark, invoices, setInvoices }) {
         open={showEdit}
         setOpen={setShowEdit}
         dark={dark}
-        invoice={currentInvoice} // 🔥 IMPORTANT FIX
+        invoice={currentInvoice}
         invoices={invoices}
         setInvoices={setInvoices}
       />

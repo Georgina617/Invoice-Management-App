@@ -12,23 +12,67 @@ function Home({ dark }) {
   const [showModal, setShowModal] = useState(false);
   const [selectedInvoice, setSelectedInvoice] = useState(null);
 
-  // ✅ SAFE LOCALSTORAGE LOAD (VERY IMPORTANT)
+  // 🔥 DATA ADAPTER (VERY IMPORTANT)
+  const transformInvoice = (inv) => ({
+    id: inv.id,
+
+    // 🔥 FIX FIELD NAMES
+    project: inv.project || inv.description || '',
+    invoiceDate: inv.invoiceDate || inv.createdAt || '',
+    paymentTerms: String(inv.paymentTerms || 30),
+
+    clientName: inv.clientName || '',
+    clientEmail: inv.clientEmail || '',
+
+    // 🔥 FLATTEN ADDRESSES
+    senderStreet: inv.senderStreet || inv.senderAddress?.street || '',
+    senderCity: inv.senderCity || inv.senderAddress?.city || '',
+    senderPostCode: inv.senderPostCode || inv.senderAddress?.postCode || '',
+    senderCountry: inv.senderCountry || inv.senderAddress?.country || '',
+
+    clientStreet: inv.clientStreet || inv.clientAddress?.street || '',
+    clientCity: inv.clientCity || inv.clientAddress?.city || '',
+    clientPostCode: inv.clientPostCode || inv.clientAddress?.postCode || '',
+    clientCountry: inv.clientCountry || inv.clientAddress?.country || '',
+
+    // 🔥 FIX ITEMS STRUCTURE
+    items: (inv.items || []).map((item) => {
+      const qty = Number(item.qty || item.quantity || 1);
+      const price = Number(item.price || 0);
+
+      return {
+        name: item.name || '',
+        qty,
+        price,
+        total: Number((qty * price).toFixed(2)),
+      };
+    }),
+
+    total: Number(inv.total || 0),
+    status: inv.status || 'pending',
+  });
+
+  // ✅ SAFE LOCALSTORAGE LOAD + TRANSFORM
   const [invoices, setInvoices] = useState(() => {
     try {
       const saved = localStorage.getItem('invoices');
 
-      // 👉 if NOTHING in storage → use default data
-      if (!saved) return invoicesData;
+      // 👉 NOTHING saved → transform default data
+      if (!saved) {
+        return invoicesData.map(transformInvoice);
+      }
 
       const parsed = JSON.parse(saved);
 
-      // 👉 if storage is empty array → keep it empty (don't fallback)
-      if (Array.isArray(parsed)) return parsed;
+      // 👉 If valid array → normalize it too
+      if (Array.isArray(parsed)) {
+        return parsed.map(transformInvoice);
+      }
 
-      return invoicesData;
+      return invoicesData.map(transformInvoice);
     } catch (error) {
       console.log('LocalStorage error:', error);
-      return invoicesData;
+      return invoicesData.map(transformInvoice);
     }
   });
 
